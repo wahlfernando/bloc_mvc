@@ -9,7 +9,10 @@ class MoveList extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Filmes Populares'),
+        title: Text(
+          'Filmes Populares',
+          textAlign: TextAlign.center,
+        ),
       ),
       body: StreamBuilder(
         stream: bloc.allMovies,
@@ -35,7 +38,7 @@ class MoveList extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           return Image.network(
             'https://image.tmdb.org/t/p/w185${snapshot.data.results[index].poster_path}',
-            fit: BoxFit.cover,
+            fit: BoxFit.fill,
           );
         });
   }

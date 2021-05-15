@@ -7,7 +7,7 @@ import 'package:http/http.dart' show Client;
 class MoveApiProvider {
   Client client = Client();
   var _url = Uri.parse(
-      'http://api.themoviedb.org/3/movie/popular?api_key=30b092961aedd38b1de1ecc15f61efad');
+      'https://api.themoviedb.org/3/movie/popular?api_key=30b092961aedd38b1de1ecc15f61efad');
 
   Future<ItemModel> fetchMovieList() async {
     print("Entrou");
