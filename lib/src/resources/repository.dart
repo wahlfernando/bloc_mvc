@@ -1,4 +1,5 @@
 import 'package:bloc_mvc/src/models/item_model.dart';
+import 'package:bloc_mvc/src/models/trailer_model.dart';
 import 'package:bloc_mvc/src/resources/move_api_provider.dart';
 
 // è aqui que ele chama a função dentro do arquivo "move_api_provider.dart"
@@ -8,5 +9,9 @@ import 'package:bloc_mvc/src/resources/move_api_provider.dart';
 class Repository {
   final movesApiProviders = MoveApiProvider();
 
-  Future<ItemModel> fetchAllMovies() => movesApiProviders.fetchMovieList();
+  Future<ItemModel> fetchAllMovies() =>
+      movesApiProviders.fetchMovieList();
+
+  Future<TrailerModel> fetchTrailers(int movieId) =>
+      movesApiProviders.fetchTrailer(movieId);
 }

@@ -2,9 +2,9 @@
 
 Neste exemplo estou usando gerenciamento de estado Bloc nativo e a arquitetura MVC (Model View Controller);
 
-O objetivo do app é mostra uma série de filmes que estão em cartaz.
+O objetivo do app é mostra uma série de filmes que estão em cartaz, com seis detelhes a cada clique em cada filme.
+A segunda tela mostra u=os detalhes do filme escolhido na tela inicial.
 
-Não tem muita interação e layout bonito, é apenas para amostragem de integração com API usando o Bloc e padrão MVC. 
 
 O procedimento é contruido todo com comunicação em API, para isso deve seguir alguns passos para a resprodução.
 

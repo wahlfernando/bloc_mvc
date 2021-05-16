@@ -1,5 +1,7 @@
 import 'package:bloc_mvc/src/blocs/mivie_bloc.dart';
+import 'package:bloc_mvc/src/blocs/movie_detail_bloc_provider.dart';
 import 'package:bloc_mvc/src/models/item_model.dart';
+import 'package:bloc_mvc/src/ui/move_detail.dart';
 import 'package:flutter/material.dart';
 
 class MoveList extends StatefulWidget {
@@ -51,10 +53,36 @@ class _MoveListState extends State<MoveList> {
         gridDelegate:
             SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
         itemBuilder: (BuildContext context, int index) {
-          return Image.network(
-            'https://image.tmdb.org/t/p/w185${snapshot.data.results[index].poster_path}',
-            fit: BoxFit.fill,
+          return GridTile(
+            child: InkResponse(
+              enableFeedback: true,
+              child: Image.network(
+                'https://image.tmdb.org/t/p/w185${snapshot.data.results[index].poster_path}',
+                fit: BoxFit.fill,
+              ),
+              onTap: () => openDetailPage(snapshot.data, index),
+            ),
           );
         });
   }
+
+  openDetailPage(ItemModel data, int index) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) {
+        return MovieDetailBlocProvider(
+          child: MovieDetail(
+            title: data.results[index].title,
+            posterUrl: data.results[index].backdrop_path,
+            description: data.results[index].overview,
+            releaseDate: data.results[index].release_date,
+            voteAverage: data.results[index].vote_average.toString(),
+            movieId: data.results[index].id,
+          ),
+        );
+      }),
+    );
+  }
+
+
 }
