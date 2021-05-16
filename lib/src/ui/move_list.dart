@@ -2,11 +2,26 @@ import 'package:bloc_mvc/src/blocs/mivie_bloc.dart';
 import 'package:bloc_mvc/src/models/item_model.dart';
 import 'package:flutter/material.dart';
 
-class MoveList extends StatelessWidget {
+class MoveList extends StatefulWidget {
+  @override
+  _MoveListState createState() => _MoveListState();
+}
+
+class _MoveListState extends State<MoveList> {
+  @override
+  void initState() {
+    super.initState();
+    bloc.fetchAllMovies();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    bloc.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    bloc.fetchAllMovies();
-
     return Scaffold(
       appBar: AppBar(
         title: Text(
